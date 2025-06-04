@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agenda Semanal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="icons">
+      <span><a href="index.html">📅</a></span>
+      <h1>Agenda</h1>
+      <span><a href="login.html">👤</a></span>
+    </div>
+  </header>
+
+  <main>
+    <div class="search-bar">
+      <span>&nbsp;🔍</span><input class="search-input" placeholder="Pesquisar Compromissos...">
+    </div>
+    <a href="criar-compromisso-alt.html"><button class="add-compromisso">➕ Adicionar Compromisso</button></a>
+    <section class="calendar-container">
+      <div class="calendar-header">
+        <button id="prev-week">←</button>
+        <h2 id="week-range"></h2>
+        <button id="next-week">→</button>
+      </div>
+      <div class="week-grid-wrapper">
+        <div class="week-grid" id="week-grid">
+            <span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
+        </div>
+      </div>
+      <div class="days" id="week-days"></div>
+    </section>
+
+    <div class="today-label" id="today-label"></div>
+    <section class="agenda-hoje">
+      <hr />
+      <h3>Compromissos de hoje</h3>
+      <div class="caixa">
+        <a href="compromisso1.html">
+          <div class="tag-compromisso">
+            <div class="circulo azul"></div><span><span class="horario">09:00 - 10:30</span> Reuniao X</span>
+          </div>
+        </a>
+        <a href="compromisso2.html">
+          <div class="tag-compromisso">
+            <div class="circulo vermelho"></div><span><span class="horario">11:00 - 11:45</span> Reuniao Y</span>
+          </div>
+        </a>
+        <a href="compromisso3.html">
+          <div class="tag-compromisso">
+            <div class="circulo verde"></div><span><span class="horario">12:00 - 13:00</span> Almoço com a Família</span>
+          </div>
+        </a>
+        <a href="compromisso4.html">
+          <div class="tag-compromisso">
+            <div class="circulo laranja"></div><span><span class="horario">15:00 - 16:00</span> Reuniao Z</span>
+          </div>
+        </a>
+        <a href="compromisso5.html">
+          <div class="tag-compromisso">
+            <div class="circulo amarelo"></div><span><span class="horario">19:00 - 20:30</span> Academia</span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script src="semana.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Novo Compromisso</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="criar-compromisso.css" />
+</head>
+<body>
+  <div class="container">
+    <span class="voltar"><a href="index.html">⬅️</a></span>
+    <h1>Detalhes do Compromisso</h1>
+    <input class="input-title" type="text" placeholder="Adicionar Título" value="Reunião X"/>
+
+    <h3>Data do Compromisso</h3>
+    <div class="data-container">
+      <select class="data-select">
+        <option disabled>Dia</option>
+        <option>01</option><option>02</option><option selected>03</option><option>04</option><option>05</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option>
+      </select>
+      <select class="data-select">
+        <option disabled>Mes</option>
+        <option>01</option><option>02</option><option>03</option><option>04</option><option>05</option><option selected>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option>
+      </select>
+      <select class="data-select">
+          <option disabled>Ano</option>
+          <option selected>2025</option><option>2026</option><option>2027</option><option>2028</option><option>2029</option>
+      </select>
+    </div>
+    
+    <h3>Horário do Compromisso</h3>
+    <div class="time-group">
+      <span class="ordem">Início :</span>
+      <input class="time-number" type="number" min="0" max="23" placeholder="Horas" value="09"/>
+      <span>:</span>
+      <input class="time-number" type="number" min="0" max="59" placeholder="Minutos" value="00"/>
+    </div>
+    <div class="time-group">
+      <span class="ordem">Fim&nbsp;&nbsp;&nbsp;:&nbsp;</span>
+      <input class="time-number" type="number" min="0" max="23" placeholder="Horas" value="10"/>
+      <span>:</span>
+      <input class="time-number" type="number" min="0" max="59" placeholder="Minutos" value="30"/>
+    </div>
+    
+    <div class="label-and-input">
+      <label for="myInput">🎥 Adicionar link :&nbsp;</label>
+      <input class="text-input" id="myInput" name="myInput" placeholder="Link para vídeo-conferência" value="link-da-reuniaox.com">
+    </div>
+    <div class="label-and-input">
+      <label for="myInput">📍 Adicionar local :&nbsp;</label>
+      <input class="text-input" id="myInput" name="myInput" placeholder="Nome do local" value="Empresa XYZ">
+    </div>
+
+    <div class="notification">
+      <span>🔔</span>
+      <select>
+        <option>Notificação</option>
+        <option>Email</option>
+      </select>
+      <input type="number" value="30" style="width: 60px" />
+      <select>
+        <option>Minutos</option>
+        <option>Horas</option>
+        <option>Dias</option>
+        <option>Meses</option>
+      </select>
+      <button style="width: auto; background: none; color: white;">&times;</button>
+    </div>
+    <small>Adicionar notificação</small>
+
+    <textarea class="textarea" placeholder="Adicionar uma descrição">Reuniao para falar sobre Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </textarea>
+
+    <div class="expandable">➕ <input type="text" placeholder="Adicionar convidados" value="funcionario1@email.com ; funcionario2@email.com ;"></div>
+    <div class="expandable">
+        
+        <label for="myInput">✏️</label>
+        <input class="categoria" list="options" id="myInput" name="myInput" placeholder="Categoria" value="Trabalho">
+
+        <datalist id="options">
+            <option value="Trabalho">
+            <option value="Estudo">
+            <option value="Lazer">
+            <option value="Familia">
+            <option value="Atividade Física">
+            <option value="Viagem">
+        </datalist>
+        <div class="dropdown" id="colorDropdown">
+            <div class="dropdown-button" id="selectedColor">
+                <span>Selecione uma cor</span>
+            </div>
+        <div class="dropdown-list" id="colorList"></div>
+
+    </div>
+    </div>
+
+    <a href="index.html">
+        <button class="save-button">
+            <span>🗓️</span> Salvar Compromisso
+        </button>
+    </a>
+    <a href="index.html">
+        <button class="apagar-compromisso">
+            <span>❌</span> Apagar Compromisso
+        </button>
+    </a>
+  </div>
+</body>
+
+<script src="compromisso1.js"></script>
+</html>
+

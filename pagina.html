@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Detalhes da Data</title>
+</head>
+<body>
+  <h1>Página em branco</h1>
+  <p>Você clicou na data: <span id="dataSelecionada"></span></p>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    document.getElementById('dataSelecionada').textContent = urlParams.get('data');
+  </script>
+</body>
+</html>
