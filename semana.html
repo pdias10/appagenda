@@ -4,14 +4,257 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Agenda Semanal</title>
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #2f5f6b;
+      color: white;
+      margin: 0 auto;
+      max-width: 540px; 
+    }
+
+    header {
+      padding: 1rem;
+      text-align: center;
+      background-color: #2f5f6b;
+      color: white;
+    }
+
+    .icons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+    }
+
+    .icons h1 {
+      font-size: 1.8rem;
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .add-compromisso {
+      cursor: pointer;
+    }
+
+    .search-bar, .add-compromisso {
+      display: flex;
+      width: 88%;
+      height: 2em;
+      margin: 1rem 2rem 0 2rem;
+      justify-content: center;
+      font-size: 22px;
+      align-items: center;
+      background-color: white;
+      border-radius: 10px;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 90%;
+      font-size: 22px;border-radius: 10px;
+      border: none;
+    }
+
+    .calendar-container {
+      background-color: white;
+      margin: 1rem 2rem;
+      padding: 1rem;
+      border-radius: 12px;
+      color: black;
+    }
+
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .calendar-header h2 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+
+    .calendar-header button {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #2f5f6b;
+    }
+
+    .weekdays, .days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.5rem;
+      text-align: center;
+    }
+
+    .weekdays span {
+      font-weight: bold;
+    }
+
+    .days button {
+      padding: 0.7rem;
+      border: none;
+      border-radius: 6px;
+      background-color: #ccc;
+      cursor: pointer;
+    }
+
+    .days button:hover {
+      background-color: #888;
+      color: white;
+    }
+
+    .days button.current {
+      background-color: #2f5f6b;
+      color: white;
+    }
+
+    .today-label {
+      margin-top: 0rem;
+      margin-left: 2em;
+      font-size: 1.5rem;
+      text-align: left;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .agenda-hoje {
+      background-color: #2f5f6b;
+      color: white;
+      margin: 0rem 1rem 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .agenda-hoje hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin-bottom: 1rem;
+    }
+
+    .agenda-hoje h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .agenda-hoje p {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .time-cell {
+      background-color: #f0f0f0;
+      font-weight: bold;
+    }
+
+    .day-hour {
+      cursor: pointer;
+      background-color: #fff;
+    }
+
+    .day-hour:hover {
+      background-color: #c8e6f0;
+    }
+
+    .week-grid-wrapper {
+      max-height: 300px; /* mostra aproximadamente 11 linhas (08:00–18:00) */
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-top: 1rem;
+      background-color: white;
+    }
+
+    /* Mantém colunas fixas e responsivas */
+    .week-grid {
+      display: grid;
+      grid-template-columns: 80px repeat(7, 1fr);
+    }
+
+    .week-grid .time-cell,
+    .week-grid .day-hour {
+      border: 1px solid #ccc;
+      padding: 4px;
+      font-size: 0.75rem;
+      text-align: center;
+      min-height: 40px;
+    }
+
+    .caixa {
+      align-items: center;
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      width: fit-content;
+      font-family: sans-serif;
+      font-size: 16px;
+      border: none;
+    }
+
+    .circulo {
+      width: 16px;
+      height: 16px;
+      background-color: blue;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .tag-compromisso {
+        display: flex;
+        margin-bottom: 10px
+    }
+
+    .azul {
+        background-color: blue;
+    }
+
+    .vermelho {
+        background-color: red;
+    }
+
+    .verde {
+        background-color: green;
+    }
+
+    .laranja {
+        background-color: orange;
+    }
+
+    .amarelo {
+        background-color: yellow;
+    }
+
+    .horario {
+      font-weight: 600;
+    }
+
+    .caixa a {
+      all:unset;
+      cursor: pointer;
+    }
+
+    .caixa a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
 </head>
 <body>
   <header>
     <div class="icons">
       <span><a href="index.html">📅</a></span>
       <h1>Agenda</h1>
-      <span><a href="login.html">👤</a></span>
+      <span><a href="detalhes-perfil.html">👤</a></span>
     </div>
   </header>
 
@@ -68,6 +311,119 @@
     </section>
   </main>
 
-  <script src="semana.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const weekContainer = document.getElementById('week-days');
+      const weekLabel = document.getElementById('week-range');
+      const todayLabel = document.getElementById('today-label');
+      const prevBtn = document.getElementById('prev-week');
+      const nextBtn = document.getElementById('next-week');
+
+      let currentDate = new Date();
+
+      function getStartOfWeek(date) {
+        const day = date.getDay();
+        const diff = day === 0 ? -6 : 1 - day; // Start on Monday
+        const start = new Date(date);
+        start.setDate(date.getDate() + diff);
+        return start;
+      }
+
+      function formatarDataCompleta(date) {
+        const meses = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+        return `${date.getDate()} de ${meses[date.getMonth()]} de ${date.getFullYear()}`;
+      }
+
+      function renderWeek(date) {
+        const grid = document.getElementById('week-grid');
+        grid.innerHTML = "";
+
+        const start = getStartOfWeek(date);
+        const dias = [];
+
+        for (let i = 0; i < 7; i++) {
+          const dia = new Date(start);
+          dia.setDate(start.getDate() + i);
+          dias.push(dia);
+        }
+
+        const inicio = dias[0];
+        const fim = dias[6];
+        weekLabel.textContent = `Semana de ${formatarDataCompleta(inicio)} a ${formatarDataCompleta(fim)}`;
+        todayLabel.textContent = `${formatarDataCompleta(new Date())}`;
+
+        // Cabeçalho da grade: vazado + dias
+        const headerVazio = document.createElement('div');
+        headerVazio.classList.add('time-cell');
+        grid.appendChild(headerVazio);
+
+        const diasDaSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+
+        dias.forEach(dia => {
+          const head = document.createElement('div');
+          head.classList.add('time-cell');
+        
+          const nomeDia = diasDaSemana[dia.getDay()];
+          const dataDia = `${String(dia.getDate()).padStart(2, '0')}/${String(dia.getMonth() + 1).padStart(2, '0')}`;
+        
+          head.innerHTML = `<strong>${nomeDia}</strong><br>${dataDia}`;
+          grid.appendChild(head);
+        });
+
+        // Cores para os círculos nos horários da quarta-feira
+        const compromissosQua = {
+          9: 'azul',
+          10: 'azul',
+          11: 'vermelho',
+          12: 'verde',
+          15: 'laranja',
+          19: 'amarelo',
+          20: 'amarelo'
+        };
+
+        // Linhas de horário
+        for (let hora = 0; hora < 24; hora++) {
+          const timeLabel = document.createElement('div');
+          timeLabel.classList.add('time-cell');
+          timeLabel.textContent = `${String(hora).padStart(2, '0')}:00`;
+          grid.appendChild(timeLabel);
+
+          dias.forEach((dia, index) => {
+            const cell = document.createElement('div');
+            cell.classList.add('day-hour');
+
+            const dataStr = `${dia.getFullYear()}-${String(dia.getMonth() + 1).padStart(2, '0')}-${String(dia.getDate()).padStart(2, '0')}T${String(hora).padStart(2, '0')}:00`;
+
+            cell.addEventListener('click', () => {
+              window.location.href = `criar-compromisso.html?data=${dataStr.slice(0, -6)}`;
+            });
+
+            // Se for quarta-feira (index 3 porque domingo=0, segunda=1, terça=2, quarta=3)
+            if (index === 2 && compromissosQua[hora]) {
+              const circulo = document.createElement('div');
+              circulo.classList.add('circulo', compromissosQua[hora]);
+              circulo.style.margin = 'auto'; // centralizar o círculo
+              cell.appendChild(circulo);
+            }
+
+            grid.appendChild(cell);
+          });
+        }
+      }
+
+
+      prevBtn.addEventListener('click', () => {
+        currentDate.setDate(currentDate.getDate() - 7);
+        renderWeek(currentDate);
+      });
+
+      nextBtn.addEventListener('click', () => {
+        currentDate.setDate(currentDate.getDate() + 7);
+        renderWeek(currentDate);
+      });
+
+      renderWeek(currentDate);
+    });
+  </script>
 </body>
 </html>

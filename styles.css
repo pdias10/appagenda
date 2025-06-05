@@ -111,7 +111,7 @@ a {
 }
 
 .today-label {
-  margin-top: 1rem;
+  margin-top: 0rem;
   margin-left: 2em;
   font-size: 1.5rem;
   text-align: left;
@@ -122,7 +122,7 @@ a {
 .agenda-hoje {
   background-color: #2f5f6b;
   color: white;
-  margin: 2rem 1rem 1rem;
+  margin: 0rem 1rem 1rem;
   padding: 1rem;
   border-radius: 8px;
 }
@@ -238,4 +238,14 @@ a {
 
 .caixa a:hover {
   text-decoration: underline;
+}
+
+.indicador-vermelho {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
+  margin-left: 4px;
+  vertical-align: middle;
 }
